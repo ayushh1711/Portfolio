@@ -18,11 +18,11 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Scroll Animations for Sections
+// Scroll Animations for Page Sections
 const sections = document.querySelectorAll('.section');
 
 const observerOptions = {
-    threshold: 0.1, // Adjusted slightly to ensure taller sections trigger smoothly
+    threshold: 0.1, // Calibrated threshold to allow smoother cascade triggers on long scrolling sections
     rootMargin: "0px 0px -50px 0px"
 };
 
@@ -36,9 +36,28 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 sections.forEach(section => {
-    // Set initial state via JS to avoid layout shifts if JS fails
+    // Structural parameters generated via JS to eliminate layout jumps when parsing script
     section.style.opacity = "0";
     section.style.transform = "translateY(30px)";
     section.style.transition = "all 0.8s ease-out";
     observer.observe(section);
+});
+
+// Interactive Custom Mouse Cursor Follower Engine
+const cursor = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', (e) => {
+    // Dynamic absolute coordinate position mappings
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+// Cursor expansion handlers targeting interactive navigation structures
+document.querySelectorAll('a, .btn, .project-card, .contact-box, .menu-toggle').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-hover');
+    });
+    item.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-hover');
+    });
 });
