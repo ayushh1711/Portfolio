@@ -18,11 +18,11 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Scroll Animations
+// Scroll Animations for Sections
 const sections = document.querySelectorAll('.section');
 
 const observerOptions = {
-    threshold: 0.15,
+    threshold: 0.1, // Adjusted slightly to ensure taller sections trigger smoothly
     rootMargin: "0px 0px -50px 0px"
 };
 
@@ -36,7 +36,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 sections.forEach(section => {
-    // Set initial state via JS to avoid layout shift if JS fails
+    // Set initial state via JS to avoid layout shifts if JS fails
     section.style.opacity = "0";
     section.style.transform = "translateY(30px)";
     section.style.transition = "all 0.8s ease-out";
